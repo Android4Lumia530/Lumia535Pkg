@@ -32,35 +32,35 @@
 
 
 [PcdsFixedAtBuild.common]
-  gArmTokenSpaceGuid.PcdSystemMemorySize|0x40000000         # 1GB
+  gArmTokenSpaceGuid.PcdSystemMemorySize|0x20000000         # 0.5GB
   gArmTokenSpaceGuid.PcdSystemMemoryBase|0x00000000
   gArmPlatformTokenSpaceGuid.PcdCoreCount|4
-  gLumia535PkgTokenSpaceGuid.PcdPreAllocatedMemorySize|0x3CD00000 #0FF00000
+  gLumia535PkgTokenSpaceGuid.PcdPreAllocatedMemorySize|0x1CD00000 #0FF00000
   gLumia535PkgTokenSpaceGuid.PcdUefiMemPoolSize|0x03300000
 
   # Default resolution for this firmware can be seen in dec file, override here for specific platform configuration if needed
-  #gLumia535PkgTokenSpaceGuid.PcdMipiFrameBufferWidth|540
-  #gLumia535PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|960
-  #gLumia535PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|540
-  #gLumia535PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|960
+  #gLumia535PkgTokenSpaceGuid.PcdMipiFrameBufferWidth|480
+  #gLumia535PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|854
+  #gLumia535PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|480
+  #gLumia535PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|854
 
 [PcdsDynamicDefault.common]
   #
   # Set video resolution for boot options and for text setup.
   # PlatformDxe can set the former at runtime.
   #
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|540
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|960
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|540
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|960
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|120
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|50
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|480
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|854
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|480
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|854
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|60
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|45
 
   [PcdsPatchableInModule]
    # Console Resolution
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|540
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|960
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|50
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|120
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|480
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|854
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|45
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|60
 
 !include Lumia535Pkg/Shared.dsc.inc
