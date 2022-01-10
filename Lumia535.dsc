@@ -53,14 +53,14 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|854
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|480
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|854
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|60
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|45
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|106
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|25
 
   [PcdsPatchableInModule]
    # Console Resolution
   gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|480
   gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|854
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|45
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|60
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|25
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|106
 
 !include Lumia535Pkg/Shared.dsc.inc
