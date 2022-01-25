@@ -37,7 +37,7 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdSupportUpdateCapsuleReset|TRUE
 
 [PcdsFixedAtBuild.common]
-  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"Movistar"
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"The one and only basement upstairs"
   gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVersionString|L"1.01"
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemId|"QCOM  "
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x324B44454D4F4351
@@ -142,11 +142,15 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdBootManagerMenuFile|{ 0x21, 0xaa, 0x2c, 0x46, 0x14, 0x76, 0x03, 0x45, 0x83, 0x6e, 0x8a, 0xb6, 0xf4, 0x66, 0x23, 0x31 }
   #gEfiIntelFrameworkModulePkgTokenSpaceGuid.PcdShellFile|{ 0x83, 0xA5, 0x04, 0x7C, 0x3E, 0x9E, 0x1C, 0x4F, 0xAD, 0x65, 0xE0, 0x52, 0x68, 0xD0, 0xB4, 0xD1 }
   gEfiMdePkgTokenSpaceGuid.PcdPlatformBootTimeOut|5
+  
+  # RPM
+  gQcomTokenSpaceGuid.PcdApcsAlias0IpcInterrupt|0xF9011000 #Value from LK
+  gQcomTokenSpaceGuid.PcdSmdIrq|200
 
-[LibraryClasses]
-  TimeBaseLib|EmbeddedPkg/Library/TimeBaseLib/TimeBaseLib.inf
-  VariablePolicyHelperLib|MdeModulePkg/Library/VariablePolicyHelperLib/VariablePolicyHelperLib.inf
-  OrderedCollectionLib|MdePkg/Library/BaseOrderedCollectionRedBlackTreeLib/BaseOrderedCollectionRedBlackTreeLib.inf
+   # SMEM
+  gQcomTokenSpaceGuid.PcdMsmSharedBase|0x0D900000 #Value from LK
+  gQcomTokenSpaceGuid.PcdMsmSharedSize|0x00100000 #Value from LK
+
 
 [LibraryClasses.common]
   ArmLib|ArmPkg/Library/ArmLib/ArmBaseLib.inf
@@ -215,7 +219,6 @@
   TpmMeasurementLib|MdeModulePkg/Library/TpmMeasurementLibNull/TpmMeasurementLibNull.inf
   AuthVariableLib|MdeModulePkg/Library/AuthVariableLibNull/AuthVariableLibNull.inf
   VarCheckLib|MdeModulePkg/Library/VarCheckLib/VarCheckLib.inf
-  VariablePolicyLib|MdeModulePkg/Library/VariablePolicyLib/VariablePolicyLibRuntimeDxe.inf
 #  BaseStackCheckLib|MdePkg/Library/BaseStackCheckLib/BaseStackCheckLib.inf
 #  FBPTLib|DragonboardVendorPkg/Library/FBPTLib/FBPTLib.inf
 #  QcomBaseLib|DragonboardVendorPkg/Library/QcomBaseLib/QcomBaseLib.inf
@@ -245,6 +248,7 @@
   LcmLib|Lumia535Pkg/Library/LcmLib/LcmLib.inf
   MicroLibC|Lumia535Pkg/Library/MicroLibC/MicroLibC.inf
   StrLib|Lumia535Pkg/Library/StrLib/StrLib.inf
+  SmemLib|Lumia535Pkg/Driver/SmemDxe/SmemImplLib.inf
   
   # System Reset
   EfiResetSystemLib|ArmPkg/Library/ArmPsciResetSystemLib/ArmPsciResetSystemLib.inf
@@ -255,12 +259,16 @@
   PrePiMemoryAllocationLib|EmbeddedPkg/Library/PrePiMemoryAllocationLib/PrePiMemoryAllocationLib.inf
   PrePiHobListPointerLib|ArmPlatformPkg/Library/PrePiHobListPointerLib/PrePiHobListPointerLib.inf
   PcdLib|MdePkg/Library/BasePcdLibNull/BasePcdLibNull.inf
-  
+  RpmLib|Lumia535Pkg/Driver/SmdRpmDxe/RpmLib.inf
+  SmemLib|Lumia535Pkg/Driver/SmemDxe/SmemImplLib.inf
+
   # SoC Drivers
   GpioTlmmLib|Lumia535Pkg/GPLDriver/GpioTlmmDxe/GpioTlmmImplLib.inf
   SpmiLib|Lumia535Pkg/Driver/SpmiDxe/SpmiImplLib.inf
   Pm8x41Lib|Lumia535Pkg/Driver/Pm8x41Dxe/Pm8x41ImplLib.inf
   ClockLib|Lumia535Pkg/Driver/ClockDxe/ClockImplLib.inf
+  RpmLib|Lumia535Pkg/Driver/SmdRpmDxe/RpmLib.inf
+  SmemLib|Lumia535Pkg/Driver/SmemDxe/SmemImplLib.inf
 
 [LibraryClasses.common.DXE_CORE]
   HobLib|MdePkg/Library/DxeCoreHobLib/DxeCoreHobLib.inf
@@ -297,12 +305,14 @@
   FileHandleLib|MdePkg/Library/UefiFileHandleLib/UefiFileHandleLib.inf
   ReportStatusCodeLib|MdeModulePkg/Library/DxeReportStatusCodeLib/DxeReportStatusCodeLib.inf
   ExtractGuidedSectionLib|MdePkg/Library/DxeExtractGuidedSectionLib/DxeExtractGuidedSectionLib.inf
+  RpmLib|Lumia535Pkg/Driver/SmdRpmDxe/RpmLib.inf
 
   # SoC Drivers
   GpioTlmmLib|Lumia535Pkg/GPLDriver/GpioTlmmDxe/GpioTlmmLib.inf
   SpmiLib|Lumia535Pkg/Driver/SpmiDxe/SpmiLib.inf
   Pm8x41Lib|Lumia535Pkg/Driver/Pm8x41Dxe/Pm8x41Lib.inf
   ClockLib|Lumia535Pkg/Driver/ClockDxe/ClockImplLib.inf
+  SmemLib|Lumia535Pkg/Driver/SmemDxe/SmemImplLib.inf
 
 [LibraryClasses.common.UEFI_DRIVER]
   ReportStatusCodeLib|MdeModulePkg/Library/DxeReportStatusCodeLib/DxeReportStatusCodeLib.inf
@@ -312,12 +322,14 @@
   MemoryAllocationLib|MdePkg/Library/UefiMemoryAllocationLib/UefiMemoryAllocationLib.inf
   UefiScsiLib|MdePkg/Library/UefiScsiLib/UefiScsiLib.inf
   ExtractGuidedSectionLib|MdePkg/Library/DxeExtractGuidedSectionLib/DxeExtractGuidedSectionLib.inf
+  RpmLib|Lumia535Pkg/Driver/SmdRpmDxe/RpmLib.inf
 
   # SoC Drivers
   GpioTlmmLib|Lumia535Pkg/GPLDriver/GpioTlmmDxe/GpioTlmmLib.inf
   SpmiLib|Lumia535Pkg/Driver/SpmiDxe/SpmiLib.inf
   Pm8x41Lib|Lumia535Pkg/Driver/Pm8x41Dxe/Pm8x41Lib.inf
   ClockLib|Lumia535Pkg/Driver/ClockDxe/ClockImplLib.inf
+  SmemLib|Lumia535Pkg/Driver/SmemDxe/SmemImplLib.inf
 
 [LibraryClasses.common.DXE_RUNTIME_DRIVER]
   HobLib|MdePkg/Library/DxeHobLib/DxeHobLib.inf
@@ -367,7 +379,8 @@
   Lumia535Pkg/Driver/KeypadDxe/KeypadDxe.inf
   Lumia535Pkg/Driver/ClockDxe/ClockDxe.inf
   Lumia535Pkg/Driver/SdhciMMCHSDxe/SdhciMMCHS.inf
-
+  Lumia535Pkg/Driver/SmemDxe/SmemDxe.inf
+  Lumia535Pkg/Driver/SmdRpmDxe/RpmDxe.inf
 
 
   # Runtime Services
