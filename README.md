@@ -1,3 +1,5 @@
+# This repo is outdated so please go to [Lumia530Pkg](https://github.com/vicenteicc2008/Lumia530Pkg) for Lumia 530
+
 # Lumia535Pkg
 WIP Custom ARM UEFI firmware for Lumia535
 
